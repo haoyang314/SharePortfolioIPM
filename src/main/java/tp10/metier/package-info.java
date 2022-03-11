@@ -14,27 +14,3 @@
  * limitations under the License.
  */
 package tp10.metier;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-/**
- *
- * @author haoya
- */
-public class JourTest {
-    
-    public JourTest() {
-    }
-
-    @org.junit.jupiter.api.Test
-    public void testSomeMethod() {
-        Integer numJour = 3;
-        Jour j1 = new Jour(0);
-        
-        Integer result = j1.getNoJour();
-        Assertions.assertEquals(numJour,result, "L'entier pour créer un jour doit être le même que celui récupéré par la méthode getNbJour.");
-    }
-    
-}
