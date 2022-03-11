@@ -15,6 +15,7 @@
  */
 package tp10.metier;
 
+import fr.ut1.miage.Jour;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
