@@ -35,7 +35,7 @@ public abstract class Action {
         return nom;
     }
 
-    public Action(String nom) {
+    protected Action(String nom) {
         this.nom = nom;
     }
     

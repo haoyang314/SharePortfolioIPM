@@ -17,6 +17,8 @@ package fr.ut1.miage;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -28,7 +30,7 @@ public class ActionCompliquee extends Action {
 
     public ActionCompliquee(String nom) {
         super(nom);
-        this.tblComposition = new HashMap<ActionSimple, Proportion>();
+        this.tblComposition = new HashMap<>();
     }
     
     
@@ -39,20 +41,21 @@ public class ActionCompliquee extends Action {
         total = 0;
         
          // parcours des clefs
-        for(ActionSimple act : this.tblComposition.keySet()) {
+        for(Map.Entry<ActionSimple, Proportion> act : this.tblComposition.entrySet()) {
             total = total + 
-                    (act.valeur(j) * this.tblComposition.get(act).getPourcentage());
+                    (act.getKey().valeur(j) * this.tblComposition.get(act).getPourcentage());
         }
         return total;
     }
     
     public void enrgProportion(ActionSimple as, float pourcentage) {
-        if(this.tblComposition.containsKey(as) == true)
+        if(this.tblComposition.containsKey(as))
             this.tblComposition.remove(as);
            
         this.tblComposition.put(as, new Proportion(pourcentage));
     }
     
+    @Override
     public String toString() {
         return this.getNom() +"=>" + this.tblComposition.toString(); 
     }
@@ -78,4 +81,19 @@ public class ActionCompliquee extends Action {
             return NumberFormat.getPercentInstance().format(pourcentage);
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.tblComposition);
+        return hash;
+    }
+    
+    
+    
 }
